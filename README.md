@@ -50,8 +50,19 @@ Perintah cron untuk membuka seluruh file tersebut pukul 14:14 pada tanggal 14 Fe
 + `/home/yasinta/Documents/praktikum1/soal1.sh` path script yang akan di eksekusi
 
 
+
 ## No 2
 Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta untuk memberikan laporan berdasarkan file [WA_Sales_Products_2012-14.csv]. Laporan yang diminta berupa:
 + a) Tentukan negara dengan penjualan(quantity) terbanyak pada tahun 2012.
 + b) Tentukan tiga product line yang memberikan penjualan(quantity) terbanyak pada soal poin a.
 + c) Tentukan tiga product yang memberikan penjualan(quantity) terbanyak berdasarkan tiga product line yang didapatkan pada soal poin b.
+
+## No 3 (isi ya)
+## No 4 (susah jelasinnya)
+
+## No 5
+Buatlah sebuah script bash untuk menyimpan record dalam syslog yang memenuhi kriteria berikut:
++ a) Tidak mengandung string [“sudo”], tetapi mengandung string [“cron”], serta buatlah pencarian stringnya tidak bersifat case sensitive, sehingga huruf kapital atau tidak, tidak menjadi masalah.
++ b) Jumlah field (number of field) pada baris tersebut berjumlah kurang dari 13.
++ c) Masukkan record tadi ke dalam file logs yang berada pada direktori /home/[user]/modul1.
++ d) Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
