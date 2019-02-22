@@ -10,7 +10,7 @@
 Anda diminta tolong oleh teman anda untuk mengembalikan filenya yang telah dienkripsi oleh seseorang menggunakan bash script, file yang dimaksud adalah nature.zip. Karena terlalu mudah kalian memberikan syarat akan membuka seluruh file tersebut jika pukul 14:14 pada tanggal 14 Februari atau hari tersebut adalah hari jumat pada bulan Februari.
 Hint: Base64, Hexdump
 
-### Bash Script
+### 1.1 Bash Script
 
 ```
 #!/bin/bash
@@ -39,7 +39,7 @@ done
  adalah reverse operation untuk mengubah hexdump ke binary
 + `n=$((n+1))` membuat agar file gambar yang telah di unzip dimulai dari n+1 dan seterusnya. Misal : 1.jpg
 
-### Cron
+### 1.2 Cron
 Perintah cron untuk membuka seluruh file tersebut pukul 14:14 pada tanggal 14 Februari atau hari jumat pada bulan Februari adalah sebagai berikut :
 
 ```
@@ -48,3 +48,14 @@ Perintah cron untuk membuka seluruh file tersebut pukul 14:14 pada tanggal 14 Fe
 #### Penjelasan 
 + `14 14 14 2 5 /bin/bash` berarti  pukul 14:14 pada tanggal 14 Februari atau hari jumat pada bulan Februari
 + `/home/yasinta/Documents/praktikum1/soal1.sh` path script yang akan di eksekusi
+
+
+## No 2
+Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta untuk memberikan laporan berdasarkan file [WA_Sales_Products_2012-14.csv]. Laporan yang diminta berupa:
+a. Tentukan negara dengan penjualan(quantity) terbanyak pada tahun
+2012.
+b. Tentukan tiga product line yang memberikan penjualan(quantity)
+terbanyak pada soal poin a.
+c. Tentukan tiga product yang memberikan penjualan(quantity)
+terbanyak berdasarkan tiga product line yang didapatkan pada soal
+poin b.
