@@ -12,13 +12,13 @@ printf "\n"
 echo "--c--"
 produk1="Personal Accessories"
 printf "Top 3 Product dari Personal Accessories : \n"
-awk -F',' -v produk1="$produk1" '{if(($4==produk1) && ($7 == 2012)) a[$6]+=$10} END{for(i in a) print a[i]",",i}' WA_Sales_Products_2012-14.csv | sort -nr | awk -F ',' '{print $2}' | head -3
+awk -F',' -v produk1="$produk1" '{if(($1=="United States") && ($4==produk1) && ($7 == 2012)) a[$6]+=$10} END{for(i in a) print a[i]",",i}' WA_Sales_Products_2012-14.csv | sort -nr | awk -F ',' '{print $2}' | head -3
 
 produk2="Camping Equipment"
 printf "\nTop 3 Product dari Camping Equipment : \n"
-awk -F',' -v produk2="$produk2" '{if(($4==produk2) && ($7 == 2012)) a[$6]+=$10} END{for(i in a) print a[i]",",i}' WA_Sales_Products_2012-14.csv | sort -nr | awk -F ',' '{print $2}' | head -3
+awk -F',' -v produk2="$produk2" '{if(($1=="United States") && ($4==produk2) && ($7 == 2012)) a[$6]+=$10} END{for(i in a) print a[i]",",i}' WA_Sales_Products_2012-14.csv | sort -nr | awk -F ',' '{print $2}' | head -3
 
 produk3="Outdoor Protection"
 printf "\nTop 3 Product dari Outdoor Protection : \n"
-awk -F',' -v produk3="$produk3" '{if(($4==produk3) && ($7 == 2012)) a[$6]+=$10} END{for(i in a) print a[i]",",i}' WA_Sales_Products_2012-14.csv | sort -nr | awk -F ',' '{print $2}' | head -3
+awk -F',' -v produk3="$produk3" '{if(($1=="United States") &&($4==produk3) && ($7 == 2012)) a[$6]+=$10} END{for(i in a) print a[i]",",i}' WA_Sales_Products_2012-14.csv | sort -nr | awk -F ',' '{print $2}' | head -3
 
