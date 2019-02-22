@@ -52,7 +52,7 @@ Perintah cron untuk membuka seluruh file tersebut pukul 14:14 pada tanggal 14 Fe
 
 
 ## No 2
-Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta untuk memberikan laporan berdasarkan file [WA_Sales_Products_2012-14.csv]. Laporan yang diminta berupa:
+Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta untuk memberikan laporan berdasarkan file WA_Sales_Products_2012-14.csv. Laporan yang diminta berupa:
 + a) Tentukan negara dengan penjualan(quantity) terbanyak pada tahun 2012.
 + b) Tentukan tiga product line yang memberikan penjualan(quantity) terbanyak pada soal poin a.
 + c) Tentukan tiga product yang memberikan penjualan(quantity) terbanyak berdasarkan tiga product line yang didapatkan pada soal poin b.
@@ -62,7 +62,19 @@ Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta un
 
 ## No 5
 Buatlah sebuah script bash untuk menyimpan record dalam syslog yang memenuhi kriteria berikut:
-+ a) Tidak mengandung string [“sudo”], tetapi mengandung string [“cron”], serta buatlah pencarian stringnya tidak bersifat case sensitive, sehingga huruf kapital atau tidak, tidak menjadi masalah.
++ a) Tidak mengandung string “sudo”, tetapi mengandung string “cron”, serta buatlah pencarian stringnya tidak bersifat case sensitive, sehingga huruf kapital atau tidak, tidak menjadi masalah.
 + b) Jumlah field (number of field) pada baris tersebut berjumlah kurang dari 13.
 + c) Masukkan record tadi ke dalam file logs yang berada pada direktori /home/[user]/modul1.
 + d) Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
+
+### 5.1 Bash Script
+```
+awk '/cron/ || /CRON/,!/sudo/' /var/log/syslog | awk 'NF < 13' >> /home/yasinta/modul1/nomor5.log
+```
+
+#### Penjelasan
++ `/cron/ || /CRON/` mengambil baris yang mengandung kata 'cron' atau 'CRON'
++ `!/sudo/` mengambuil baris yang tidak mengandung kata sudo
++ `/var/log/syslog` file yang akan di ambil
++ `| awk 'NF < 13'` perintah sebelumnya menjadi input dari `awk 'NF < 13` dimana Number of field kurang dari 13
++ `>> /home/yasinta/modul1/nomor5.log` hasil dari awk dimasukkan ke file /home/yasinta/modul1/nomor5.log
