@@ -1,4 +1,4 @@
-# SoalShift_modul1_B06
+# Soal Shift Modul1 B06
 
 ## Oleh Kelompok B06 :
 1. Yasinta Yusniawati   05111740000054
