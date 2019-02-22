@@ -9,3 +9,21 @@
 ### No 1
 Anda diminta tolong oleh teman anda untuk mengembalikan filenya yang telah dienkripsi oleh seseorang menggunakan bash script, file yang dimaksud adalah nature.zip. Karena terlalu mudah kalian memberikan syarat akan membuka seluruh file tersebut jika pukul 14:14 pada tanggal 14 Februari atau hari tersebut adalah hari jumat pada bulan Februari.
 Hint: Base64, Hexdump
+
+### Penjelasan
+
+```
+#!/bin/bash
+
+unzip /home/yasinta/Documents/praktikum1/nature.zip -d /home/yasinta/Documents/praktikum1
+dir="/home/yasinta/Documents/praktikum1"
+mkdir $dir/hasil
+
+n=0
+
+for foto in $dir/nature/*.jpg;
+do
+ base64 --decode $foto | xxd -r > $dir/hasil/$n.jpg
+ n=$((n+1))
+done
+```
