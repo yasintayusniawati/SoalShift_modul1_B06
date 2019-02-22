@@ -69,7 +69,7 @@ berikut:
 <li> setelah huruf z akan kembali ke huruf a
 <li> Backup file syslog setiap jam.
 <li> dan buatkan juga bash script untuk dekripsinya.
-<ol>
+</ol>
 
 ### 4.1 Bash script enkripsi
 ```
