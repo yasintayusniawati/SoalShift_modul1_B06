@@ -88,14 +88,14 @@ awk -F',' -v produk3="$produk3" '{if(($1=="United States") &&($4==produk3) && ($
 ```
 
 ### Penjelasan
-+ (A)
++ **2a**
   + `awk -F ','` menghilangkan separator tanda koma (,)
   + `{if($7 == '2012') a[$1]+=$10}` mengecek tahun yang diinginkan yaitu 2012 jika iya maka dihitung jumlah quantity yang mana ada di urutan $10 untuk dijumlahkan dan ditampung dalam array tiap negara sehingga bisa menghitung jumlah quantity tiap negara
   + `{for (i in a) print i",",a[i]}` melakukan looping untuk print nama negara beserta jumlah quantitynya
   + `sort -n` untuk mengurutkan urutan quantitynya dari yang terkecil ke terbesar
   + `awk -F ',' '{print $1}` print nama negaranya saja
   + `tail -1)` mengambil urutan yang paling akhir yang mana merupakan negara dengan quantity terbanyak
-+ (B)
++ **2b**
   + `awk -F ','` menghilangkan separator tanda koma (,)
   + `-v negara="$negara"` mengambil nilai negara yang dihasilkan di (A) yaitu United States
   + `{if(($1==negara) && ($7 == 2012)) a[$4]+=$10} ` mengecek negara adalah United States dan tahun yang diinginkan yaitu 2012 jika iya maka dihitung jumlah quantity yang mana ada di urutan $10 untuk dijumlahkan dan ditampung dalam array tiap product line sehingga bisa menghitung jumlah quantity tiap product line
@@ -103,7 +103,7 @@ awk -F',' -v produk3="$produk3" '{if(($1=="United States") &&($4==produk3) && ($
   + `sort -nr` untuk mengurutkan urutan quantitynya dari yang terbesar ke terkecil
   + `awk -F ',' '{print $2}` print nama product line saja
   + `head -3` mengambil 3 urutan yang paling awal yang mana merupakan product line dengan quantity terbanyak berdasarkan negara jawaban (A) yaitu United States
-+ (C)`
++ **2c**
   + `produk1="Personal Accessories"`menyimpan Personal Accessories pada produk1
   + `-v produk1="$produk1"` mengambil nilai produk1
   + `awk -F ','` menghilangkan separator tanda koma (,)
