@@ -141,3 +141,16 @@ awk '/cron/ || /CRON/,!/sudo/' /var/log/syslog | awk 'NF < 13' >> /home/yasinta/
 + `/var/log/syslog` file yang akan di ambil
 + `| awk 'NF < 13'` perintah sebelumnya menjadi input dari `awk 'NF < 13` dimana Number of field kurang dari 13
 + `>> /home/yasinta/modul1/nomor5.log` hasil dari awk dimasukkan ke file /home/yasinta/modul1/nomor5.log
+
+### 5.2 Cron
+Perintah untuk menjalankan script tadi setiap 6 menit dari menit ke 2 hingga 30 adalah :
+
+```
+2-30/6 * * * * /bin/bash /home/yasinta/Documents/soal5.sh
+```
+
+#### Penjelasan
++ `2-30/6 * * * * /bin/bash`  menjalankan script tadi setiap 6 menit dari menit ke 2 hingga 30. Misal : 13:02, 13:08, 13:14, dst
++ `/home/yasinta/Documents/soal5.sh` path script yang akan di eksekusi
+
+
