@@ -58,7 +58,70 @@ Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta un
 + c) Tentukan tiga product yang memberikan penjualan(quantity) terbanyak berdasarkan tiga product line yang didapatkan pada soal poin b.
 
 ## No 3 (isi ya)
-## No 4 (susah jelasinnya)
+## No 4
+Lakukan backup file syslog setiap jam dengan format nama file “jam:menit tanggal-bulan-tahun”. Isi dari file backup terenkripsi dengan konversi huruf (string manipulation) yang disesuaikan dengan jam dilakukannya backup misalkan sebagai
+berikut:
++ a) Huruf b adalah alfabet kedua, sedangkan saat ini waktu menunjukkan pukul 12, sehingga huruf b diganti dengan huruf alfabet yang memiliki urutan ke 12+2 = 14.
++ b) Hasilnya huruf b menjadi huruf n karena huruf n adalah huruf ke empat belas, dan seterusnya.
++ c) setelah huruf z akan kembali ke huruf a
++ d) Backup file syslog setiap jam.
++ e) dan buatkan juga bash script untuk dekripsinya.
+
+### 4.1 Bash script enkripsi
+```
+#!/bin/bash
+
+jam=$(date "+%H")
+kecil=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+besar=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+file=$(date "+%H:%M %d-%m-%y")
+cat /var/log/syslog | tr "${kecil:0:26}" "${kecil:$jam:26}" | tr "${besar:0:26}" "${besar:$jam:26}" > "/home/yasinta/Documents/praktikum1/$jam" 
+```
+
+#### Penjelasan
++ `#!/bin/bash` **(Shebang)** berfungsi untuk memberitahu sistem bahwa perintah-perintah yg ada di dalam file tersebut harus dijalankan oleh Bash.
++ `jam=$(date "+%H")` *Jam* adalah variabel yang digunakan untuk menampung jam sedangkan *date "+%H"* perintah untuk menampilkan jam
++ `kecil=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz`variabel untuk menampung string pola huruf kecil dari [a-z] 
++ `besar=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ`variabel untuk menampung string pola huruf besar dari [A-Z]
++ `file=$(date "+%H:%M %d-%m-%y")`variabel untuk menampung nama file dengan fortmat *“jam:menit tanggal-bulan-tahun”*
++ `cat /var/log/syslog` menyatukan file dan mencetak pada output standar dari file syslog *'/var/log/syslog'*
++  `tr "${kecil:0:26}" "${kecil:$jam:26}" | tr "${besar:0:26}" "${besar:$jam:26}"` mengganti file syslog dari huruf [a-z | A-Z] menjadi string file + jam. Misal : isi file adalah string *yasinta* dan jam menunjukkan pukul 12:00, maka file enkripsinya menjadi *kmeuzfm*
++ ` > "/home/yasinta/Documents/praktikum1/$jam"` file dengan format *“jam:menit tanggal-bulan-tahun”* akan disimpan di dalam direktori /home/yasinta/Documents/praktikum1
+
+### 4.2 Bash script dekripsi
+```
+!/bin/bash
+
+#Field Separator -> Pemisah Field/data
+jam=$(echo "$1" | cut -d':' -f1)
+
+kecil=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz
+besar=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ
+geser=$((26-${jam}))
+
+file=$(date "+%H:%M %d-%m-%y")
+cat "$1" | tr "${kecil:0:26}" "${kecil:$geser:26}" | tr "${besar:0:26}" "${besar:$geser:26}" > "/home/yasinta/Documents/praktikum1/dekripsi$1"
+```
+
+#### Penjelasan
++ `!/bin/bash` **(Shebang)** berfungsi untuk memberitahu sistem bahwa perintah-perintah yg ada di dalam file tersebut harus dijalankan oleh Bash.
++ `jam=$(echo "$1" | cut -d':' -f1)` *jam* adalah variabel untuk menampung file, *echo "$1"* menampilkan argumen pertama pada file, *cut -d':'* membagi menjadi 2 bagian yang dipisahkan oleh tanda *:* misal : file nya bernama 12:00 22-feb-2019 maka file tersebut akan dipisah menjadi **12** dan **00 22-feb-2019**, dan *-f1* untuk mengambil jam nya dalam contoh tadi yang di ambil adalah *12*
++ `kecil=abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyz`variabel untuk menampung string pola huruf kecil dari [a-z] 
++ `besar=ABCDEFGHIJKLMNOPQRSTUVWXYZABCDEFGHIJKLMNOPQRSTUVWXYZ`variabel untuk menampung string pola huruf besar dari [A-Z]
++ `geser=$((26-${jam}))` variabel yang menampung hasil dekripsi dari string manipulation, jika sekarang jam 12:00 maka string 'm' bila didekripsi menjadi string 'a'
++ `file=$(date "+%H:%M %d-%m-%y")`variabel untuk menampung nama file dengan fortmat *“jam:menit tanggal-bulan-tahun”*
++ `cat "$1" | tr "${kecil:0:26}" "${kecil:$geser:26}" | tr "${besar:0:26}" "${besar:$geser:26}"` mengambil file dengan kalimat depannya jam kemudian mendekripsi file tersebut seperti semula
++ `> "/home/yasinta/Documents/praktikum1/dekripsi$1"` file dengan format *“dekripsijam:menit tanggal-bulan-tahun”* akan disimpan di dalam direktori /home/yasinta/Documents/praktikum1
+
+### 4.3 Cron
+Perintah untuk backup file syslog setiap jam adalah :
+```
+@hourly /bin/bash /home/yasinta/Documents/praktikum1/soal4.sh
+```
+#### Penjelasan 
++ `@hourly /bin/bash` berarti dijalankan setiap jam
++ `/home/yasinta/Documents/praktikum1/soal4.sh` path script yang akan di eksekusi
 
 ## No 5
 Buatlah sebuah script bash untuk menyimpan record dalam syslog yang memenuhi kriteria berikut:
