@@ -63,11 +63,13 @@ Anda merupakan pegawai magang pada sebuah perusahaan retail, dan anda diminta un
 ## No 4
 Lakukan backup file syslog setiap jam dengan format nama file “jam:menit tanggal-bulan-tahun”. Isi dari file backup terenkripsi dengan konversi huruf (string manipulation) yang disesuaikan dengan jam dilakukannya backup misalkan sebagai
 berikut:
-+ a) Huruf b adalah alfabet kedua, sedangkan saat ini waktu menunjukkan pukul 12, sehingga huruf b diganti dengan huruf alfabet yang memiliki urutan ke 12+2 = 14.
-+ b) Hasilnya huruf b menjadi huruf n karena huruf n adalah huruf ke empat belas, dan seterusnya.
-+ c) setelah huruf z akan kembali ke huruf a
-+ d) Backup file syslog setiap jam.
-+ e) dan buatkan juga bash script untuk dekripsinya.
+<ol type="a">
+<li> Huruf b adalah alfabet kedua, sedangkan saat ini waktu menunjukkan pukul 12, sehingga huruf b diganti dengan huruf alfabet yang memiliki urutan ke 12+2 = 14.
+<li> Hasilnya huruf b menjadi huruf n karena huruf n adalah huruf ke empat belas, dan seterusnya.
+<li> setelah huruf z akan kembali ke huruf a
+<li> Backup file syslog setiap jam.
+<li> dan buatkan juga bash script untuk dekripsinya.
+<ol>
 
 ### 4.1 Bash script enkripsi
 ```
@@ -127,10 +129,12 @@ Perintah untuk backup file syslog setiap jam adalah :
 
 ## No 5
 Buatlah sebuah script bash untuk menyimpan record dalam syslog yang memenuhi kriteria berikut:
-+ a) Tidak mengandung string “sudo”, tetapi mengandung string “cron”, serta buatlah pencarian stringnya tidak bersifat case sensitive, sehingga huruf kapital atau tidak, tidak menjadi masalah.
-+ b) Jumlah field (number of field) pada baris tersebut berjumlah kurang dari 13.
-+ c) Masukkan record tadi ke dalam file logs yang berada pada direktori /home/[user]/modul1.
-+ d) Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
+<ol type="a">
+<li> Tidak mengandung string “sudo”, tetapi mengandung string “cron”, serta buatlah pencarian stringnya tidak bersifat case sensitive, sehingga huruf kapital atau tidak, tidak menjadi masalah.
+<li> Jumlah field (number of field) pada baris tersebut berjumlah kurang dari 13.
+<li> Masukkan record tadi ke dalam file logs yang berada pada direktori /home/[user]/modul1.
+<li> Jalankan script tadi setiap 6 menit dari menit ke 2 hingga 30, contoh 13:02, 13:08, 13:14, dst.
+</ol>
 
 ### 5.1 Bash Script
 ```
